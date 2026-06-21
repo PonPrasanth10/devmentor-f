@@ -14,7 +14,8 @@ export default function useStreamReview() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/review/stream', {
+      const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${BASE_URL}/review/stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ code, language })
